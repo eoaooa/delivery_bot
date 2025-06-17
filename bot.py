@@ -1,21 +1,18 @@
-import os
-from aiogram import Bot, Dispatcher, types
+import asyncio
+import logging
+from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from dotenv import load_dotenv
+from aiogram.client.default import DefaultBotProperties
+from config import BOT_TOKEN
+from handlers import router
 
-load_dotenv()
-
-TOKEN = os.getenv("BOT_TOKEN")
-
-bot = Bot(token=TOKEN, parse_mode=ParseMode.HTML)
+bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
+dp.include_router(router)
 
-@dp.message()
-async def echo(message: types.Message):
-    await message.answer("Привет! Я бот и я работаю!")
+async def main():
+    logging.basicConfig(level=logging.INFO)
+    await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    import asyncio
-    async def main():
-        await dp.start_polling(bot)
     asyncio.run(main())

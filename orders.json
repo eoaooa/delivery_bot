@@ -7,5 +7,14 @@
         "latitude": 39.765119,
         "longitude": 64.429994,
         "phone": "998936556599"
+    },
+    {
+        "\ud83e\udd64 \u041d\u0430\u043f\u0438\u0442\u043e\u043a": {
+            "price": 10000,
+            "quantity": 2
+        },
+        "latitude": 39.765063,
+        "longitude": 64.429706,
+        "phone": "998936556599"
     }
 ]
